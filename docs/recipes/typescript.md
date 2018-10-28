@@ -63,10 +63,10 @@ In order to be able to assign the `title` property to a macro you need to type t
 ```ts
 import test, {Macro} from 'ava';
 
-const macro: Macro = (t, input: string, expected: number) => {
+const macro: Macro<[string, string]> = (t, input, expected) => {
 	t.is(eval(input), expected);
 };
-macro.title = (providedTitle = '', input: string, expected: number) => `${providedTitle} ${input} = ${expected}`.trim();
+macro.title = (providedTitle = '', input, expected) => `${providedTitle} ${input} = ${expected}`.trim();
 
 test(macro, '2 + 2', 4);
 test(macro, '2 * 3', 6);
