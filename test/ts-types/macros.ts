@@ -44,3 +44,10 @@ import test, {ExecutionContext, Macro} from '../..';
 	test(hasLength, 'bar', 3);
 	test([hasLength, hasCodePoints], 'bar', 3);
 }
+
+// No arguments
+{
+	const pass: Macro<[]> = t => t.pass()
+	pass.title = () => 'pass'
+	test(pass)
+}
